@@ -2,6 +2,7 @@
 # 3/10/18
 from mcpi.minecraft import Minecraft
 from mcpi import block
+import time
 
 mc = Minecraft.create();
 
@@ -19,23 +20,20 @@ def cut_blocks(x0,y0,z0,x1,y1,z1):
     return clipboard                
     
 def copy_blocks(x0,y0,z0,x1,y1,z1):
+    start_time = time.time()    
     clipboard = []
     for i in range(abs(x1-x0)):
         for j in range(abs(y1-y0)):
             for k in range(abs(z1-z0)):
                 blk = mc.getBlock(i+x0,j+y0,k+z0)
                 clipboard.append([blk,i,j,k])
+    print (time.time() - start_time)
     return clipboard
     
 def paste_blocks(x0,y0,z0,clipboard):
     for i in range(len(clipboard)):
         curr = clipboard[i]
         mc.setBlock(curr[1]+x0,curr[2]+y0,curr[3]+z0,curr[0])
-
-def xpaste_blocks(x0,y0,z0,clipboard,blk):
-    for i in range(len(clipboard)):
-        curr = clipboard[i]
-        mc.setBlock(curr[1]+x0,curr[2]+y0,curr[3]+z0,blk)
 
 def save_blocks(clipboard,outfile):
     f = open(outfile, "w")

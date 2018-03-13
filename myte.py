@@ -24,40 +24,15 @@ xC=[0,0,0,0,1,1,0,0]
 xD=[0,0,0,0,1,1,0,1]
 xE=[0,0,0,0,1,1,1,0]
 xF=[0,0,0,0,1,1,1,1]
-x10=[0,0,0,1,0,0,0,0]
-x11=[0,0,0,1,0,0,0,1]
-x12=[0,0,0,1,0,0,1,0]
-x13=[0,0,0,1,0,0,1,1]
-x14=[0,0,0,1,0,1,0,0]
-x15=[0,0,0,1,0,1,0,1]
-x16=[0,0,0,1,0,1,1,0]
-x17=[0,0,0,1,0,1,1,1]
-x18=[0,0,0,1,1,0,0,0]
-x19=[0,0,0,1,1,0,0,1]
-x1A=[0,0,0,1,1,0,1,0]
-x1B=[0,0,0,1,1,0,1,1]
-x1C=[0,0,0,1,1,1,0,0]
-x1D=[0,0,0,1,1,1,0,1]
-x1E=[0,0,0,1,1,1,1,0]
-x1F=[0,0,0,1,1,1,1,1]
-
-a_hmyte = [x0,x1,x2,x3,x4,x5,x6,x7]
-b_hmyte = [x8,x9,xA,xB,xC,xD,xE,xF]
-a_bmyte = [a_hmyte,a_hmyte,a_hmyte,a_hmyte,b_hmyte,b_hmyte,b_hmyte,b_hmyte]
-a_kmyte = [a_bmyte,a_bmyte,a_bmyte,a_bmyte,a_bmyte,a_bmyte,a_bmyte,a_bmyte]
-a_hgmyte = [a_kmyte,a_kmyte,a_kmyte,a_kmyte,a_kmyte,a_kmyte,a_kmyte,a_kmyte]
-a_smyte = [a_hgmyte,a_hgmyte,a_hgmyte,a_hgmyte,a_hgmyte,a_hgmyte,a_hgmyte,a_hgmyte]
-a_mmyte = [a_smyte,a_smyte,a_smyte,a_smyte,a_smyte,a_smyte,a_smyte,a_smyte]  
 
 def block_to_mit(blk):
     if blk == 41:
         return 1
-    elif blk == 20:
+    elif blk == 42:
         return 0
     else:
         return -1
 	
-
 def mit_to_block(mit):
     if mit == 1:
         return 41
@@ -76,24 +51,15 @@ def random_myte_generator():
 def write_random_myte(x,y,z):
 	write_myte(random_myte_generator(),x,y,z)
 	
-
 def write_myte(myte,x,y,z):
     mc.setBlock(x,y,z,mit_to_block(myte[0]))
-    #time.sleep(t)
     mc.setBlock(x+1,y,z,mit_to_block(myte[1]))
-    #time.sleep(t)
     mc.setBlock(x,y,z+1,mit_to_block(myte[2]))
-    #time.sleep(t)
     mc.setBlock(x+1,y,z+1,mit_to_block(myte[3]))
-    #time.sleep(t)
     mc.setBlock(x,y+1,z,mit_to_block(myte[4]))
-    #time.sleep(t)
     mc.setBlock(x+1,y+1,z,mit_to_block(myte[5]))
-    #time.sleep(t)
     mc.setBlock(x,y+1,z+1,mit_to_block(myte[6]))
-    #time.sleep(t)
     mc.setBlock(x+1,y+1,z+1,mit_to_block(myte[7]))
-    #time.sleep(t)
 
 def read_myte(x,y,z):
     myte = [0,0,0,0,0,0,0,0]
@@ -106,6 +72,9 @@ def read_myte(x,y,z):
     myte[6] = mc.getBlock(x,y+1,z+1)
     myte[7] = mc.getBlock(x+1,y+1,z+1)
     return myte
+
+def write_mytes(x,y,z,mytes,offset):
+	return 0
 
 #def write_hexmyte(hmyte,x,y,z):
 #    write_myte(hmyte[0],x,y,z)
