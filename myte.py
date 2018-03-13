@@ -86,7 +86,7 @@ def write_mytes(x,y,z,mytes,offset):
 #    write_myte(hmyte[6],x,y+2,z+2)
 #    write_myte(hmyte[7],x+2,y+2,z+2)
     
-def write_hexmyte(hmyte,x,y,z):
+def write_hexmyte(x,y,z):
     write_random_myte(x,y,z)
     write_random_myte(x+2,y,z)
     write_random_myte(x,y,z+2)
@@ -97,55 +97,55 @@ def write_hexmyte(hmyte,x,y,z):
     write_random_myte(x+2,y+2,z+2)
 
     
-def write_bigmyte(bmyte,x,y,z):
-    write_hexmyte(bmyte[0],x,y,z)
-    write_hexmyte(bmyte[1],x+4,y,z)
-    write_hexmyte(bmyte[2],x,y,z+4)
-    write_hexmyte(bmyte[3],x+4,y,z+4)
-    write_hexmyte(bmyte[4],x,y+4,z)
-    write_hexmyte(bmyte[5],x+4,y+4,z)
-    write_hexmyte(bmyte[6],x,y+4,z+4)
-    write_hexmyte(bmyte[7],x+4,y+4,z+4)
+def write_bigmyte(x,y,z):
+    write_hexmyte(x,y,z)
+    write_hexmyte(x+4,y,z)
+    write_hexmyte(x,y,z+4)
+    write_hexmyte(x+4,y,z+4)
+    write_hexmyte(x,y+4,z)
+    write_hexmyte(x+4,y+4,z)
+    write_hexmyte(x,y+4,z+4)
+    write_hexmyte(x+4,y+4,z+4)
     
-def write_kilomyte(kmyte,x,y,z):
-	write_bigmyte(kmyte[0],x,y,z)
-	write_bigmyte(kmyte[1],x+8,y,z)
-	write_bigmyte(kmyte[2],x,y,z+8)	
-	write_bigmyte(kmyte[3],x+8,y,z+8)
-	write_bigmyte(kmyte[4],x,y+8,z)
-	write_bigmyte(kmyte[5],x+8,y+8,z)
-	write_bigmyte(kmyte[6],x,y+8,z+8)
-	write_bigmyte(kmyte[7],x+8,y+8,z+8)
+def write_kilomyte(x,y,z):
+	write_bigmyte(x,y,z)
+	write_bigmyte(x+8,y,z)
+	write_bigmyte(x,y,z+8)	
+	write_bigmyte(x+8,y,z+8)
+	write_bigmyte(x,y+8,z)
+	write_bigmyte(x+8,y+8,z)
+	write_bigmyte(x,y+8,z+8)
+	write_bigmyte(x+8,y+8,z+8)
 
-def write_hugemyte(hmyte,x,y,z):
-	write_kilomyte(hmyte[0],x,y,z)
-	write_kilomyte(hmyte[1],x+16,y,z)
-	write_kilomyte(hmyte[2],x,y,z+16)	
-	write_kilomyte(hmyte[3],x+16,y,z+16)
-	write_kilomyte(hmyte[4],x,y+16,z)
-	write_kilomyte(hmyte[5],x+16,y+16,z)
-	write_kilomyte(hmyte[6],x,y+16,z+16)
-	write_kilomyte(hmyte[7],x+16,y+16,z+16)
+def write_hugemyte(x,y,z):
+	write_kilomyte(x,y,z)
+	write_kilomyte(x+16,y,z)
+	write_kilomyte(x,y,z+16)	
+	write_kilomyte(x+16,y,z+16)
+	write_kilomyte(x,y+16,z)
+	write_kilomyte(x+16,y+16,z)
+	write_kilomyte(x,y+16,z+16)
+	write_kilomyte(x+16,y+16,z+16)
 	
-def write_supermyte(smyte,x,y,z):
-	write_hugemyte(smyte[0],x,y,z)
-	write_hugemyte(smyte[1],x+32,y,z)
-	write_hugemyte(smyte[2],x,y,z+32)	
-	write_hugemyte(smyte[3],x+32,y,z+32)
-	write_hugemyte(smyte[4],x,y+32,z)
-	write_hugemyte(smyte[5],x+32,y+32,z)
-	write_hugemyte(smyte[6],x,y+32,z+32)
-	write_hugemyte(smyte[7],x+32,y+32,z+32)
+def write_supermyte(x,y,z):
+	write_hugemyte(x,y,z)
+	write_hugemyte(x+32,y,z)
+	write_hugemyte(x,y,z+32)	
+	write_hugemyte(x+32,y,z+32)
+	write_hugemyte(x,y+32,z)
+	write_hugemyte(x+32,y+32,z)
+	write_hugemyte(x,y+32,z+32)
+	write_hugemyte(x+32,y+32,z+32)
 	
-def write_megamyte(mmyte,x,y,z):
-	write_supermyte(mmyte[0],x,y,z)
-	write_supermyte(mmyte[1],x+64,y,z)
-	write_supermyte(mmyte[2],x,y,z+64)	
-	write_supermyte(mmyte[3],x+64,y,z+64)
-	write_supermyte(mmyte[4],x,y+64,z)
-	write_supermyte(mmyte[5],x+64,y+64,z)
-	write_supermyte(mmyte[6],x,y+64,z+64)
-	write_supermyte(mmyte[7],x+64,y+64,z+64)
+def write_megamyte(x,y,z):
+	write_supermyte(x,y,z)
+	write_supermyte(x+64,y,z)
+	write_supermyte(x,y,z+64)	
+	write_supermyte(x+64,y,z+64)
+	write_supermyte(x,y+64,z)
+	write_supermyte(x+64,y+64,z)
+	write_supermyte(x,y+64,z+64)
+	write_supermyte(x+64,y+64,z+64)
 
 def clear_myte(x,y,z):
     mc.setBlocks(x,y,z,x+1,y+1,z+1,0)
