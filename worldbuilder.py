@@ -18,7 +18,7 @@ def cut_blocks(x0,y0,z0,x1,y1,z1):
                 clipboard.append([blk,i,j,k])
     delete_blocks(x0,y0,z0,x1,y1,z1)
     return clipboard                
-    
+
 def copy_blocks(x0,y0,z0,x1,y1,z1):
     start_time = time.time()    
     clipboard = []

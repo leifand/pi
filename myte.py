@@ -8,23 +8,6 @@ import random
 mc = Minecraft.create()
 t = 0.1
 
-x0=[0,0,0,0,0,0,0,0]
-x1=[0,0,0,0,0,0,0,1]
-x2=[0,0,0,0,0,0,1,0]
-x3=[0,0,0,0,0,0,1,1]
-x4=[0,0,0,0,0,1,0,0]
-x5=[0,0,0,0,0,1,0,1]
-x6=[0,0,0,0,0,1,1,0]
-x7=[0,0,0,0,0,1,1,1]
-x8=[0,0,0,0,1,0,0,0]
-x9=[0,0,0,0,1,0,0,1]
-xA=[0,0,0,0,1,0,1,0]
-xB=[0,0,0,0,1,0,1,1]
-xC=[0,0,0,0,1,1,0,0]
-xD=[0,0,0,0,1,1,0,1]
-xE=[0,0,0,0,1,1,1,0]
-xF=[0,0,0,0,1,1,1,1]
-
 def block_to_mit(blk):
     if blk == 41:
         return 1
@@ -40,6 +23,27 @@ def mit_to_block(mit):
         return 42
     else:
         return -1
+
+def gen_8bit_seq():
+    byte_seq = []
+    for r7 in range(2):
+        for r6 in range(2):
+            for r5 in range(2):
+                for r4 in range(2):
+                    for r3 in range(2):
+                        for r2 in range(2):
+                            for r1 in range(2):
+                                for r0 in range(2):
+                                    byte_seq.append([r7,r6,r5,r4,r3,r2,r1,r0])
+                                    print str([r7,r6,r5,r4,r3,r2,r1,r0])
+    return byte_seq
+
+def gen_binary_seq(bits):
+    if bits == 1:
+        return [[0],[1]]
+    else:
+        return []
+        
 
 def random_myte_generator():
     myte = [0,0,0,0,0,0,0,0]
