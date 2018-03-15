@@ -115,6 +115,9 @@ def display_all_mytes():
         col += 4
  
             
-            
+def test_run():
+    start_time = time.time()
+    write_mytes(-65,-64,-65,64)
+    print (time.time() - start_time)
 
     
