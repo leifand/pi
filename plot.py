@@ -41,6 +41,9 @@ def foo(x):
 def bar(x):
     return x*2
 
+def foo2(x):
+    return (16*x)-(x*x)
+
 def test1():
     print plot_points(0,10,square)
 
@@ -49,6 +52,9 @@ def test2():
 
 def test3():
     print plot_points(0,20,bar,1)
+
+def test4():
+    print plot_points(0,10,foo2,79)
 
 
 def clear_map():

@@ -89,6 +89,9 @@ def clear_myte(x,y,z):
 def create_data_cave(x,z):
 	mc.setBlocks(x,-63,z,x+140,64,z+140,0)
 
+def create_ocean(x,z):
+	mc.setBlocks(x,-63,z,x+140,0,z+140,8)
+
 def gen_8bit_seq():
     byte_seq = []
     for r7 in range(2):
@@ -111,7 +114,7 @@ def display_all_mytes():
         if col == 32:
             col = 0
             row += 4
-        write_myte(byte_list[i],col-20,20,row-20)
+        write_myte(byte_list[i],col,20,row-40)
         col += 4
  
             
