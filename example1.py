@@ -1,10 +1,14 @@
 # example1.py
-# 4/14/18
+# 5/25/18
+# Dallas Young Makers
+#
+# basic edit operations for Minecraft Pi - example 1
+#
 from mcpi.minecraft import Minecraft
 from mcpi import block
 import time
 
-mc = Minecraft.create();
+mc = Minecraft.create()
 
 def delete_blocks(x0,y0,z0,x1,y1,z1):
     mc.setBlocks(x0,y0,z0,x1,y1,z1,0)
