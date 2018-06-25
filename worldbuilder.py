@@ -58,23 +58,3 @@ def read_blocks(infile):
             count+=1
     f.close()
     return clipboard
-
-def fix_block_file(infile,outfile):
-    f = open(infile, "r")
-    clipboard = []
-    curr = []
-    count = 0
-    for line in f:
-        curr.append(int(line))
-        if count == 3:
-            clipboard.append(curr)
-            count = 0
-            curr = []
-        else:
-            count+=1
-    f.close()
-    f = open(outfile, "w")
-    for i in range(len(clipboard)):
-        curr = clipboard[i]    
-        f.write(str(curr[1])+'\n'+str(curr[2])+'\n'+str(curr[3])+'\n'+str(curr[0])+'\n')
-    f.close()
