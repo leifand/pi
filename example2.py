@@ -2,7 +2,7 @@
 # 5/25/18
 # Dallas Young Makers
 #
-# basic edit operations for Minecraft Pi
+# basic edit operations for Minecraft Pi - example 2
 #
 from mcpi.minecraft import Minecraft
 from mcpi import block
@@ -36,6 +36,21 @@ def paste_blocks(x0,y0,z0,clipboard):
         curr = clipboard[i]
         mc.setBlock(curr[0]+x0,curr[1]+y0,curr[2]+z0,curr[3])
 
+#def translate(x,y,z,clipboard):
+#
+# TODO: implement translate function
+#
+
+#def scale(x,y,z,clipboard):
+#
+# TODO: implement scale function
+#
+
+#def rotate(radians):
+#
+# TODO: implement rotate function
+#
+
 def save_blocks(clipboard,outfile):
     f = open(outfile, "w")
     for i in range(len(clipboard)):
@@ -58,3 +73,23 @@ def read_blocks(infile):
             count+=1
     f.close()
     return clipboard
+
+def fix_block_file(infile,outfile):
+    f = open(infile, "r")
+    clipboard = []
+    curr = []
+    count = 0
+    for line in f:
+        curr.append(int(line))
+        if count == 3:
+            clipboard.append(curr)
+            count = 0
+            curr = []
+        else:
+            count+=1
+    f.close()
+    f = open(outfile, "w")
+    for i in range(len(clipboard)):
+        curr = clipboard[i]    
+        f.write(str(curr[1])+'\n'+str(curr[2])+'\n'+str(curr[3])+'\n'+str(curr[0])+'\n')
+    f.close()
