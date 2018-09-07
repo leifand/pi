@@ -89,6 +89,17 @@ def clear_myte(x,y,z):
 def create_data_cave(x,z):
 	mc.setBlocks(x,-63,z,x+140,64,z+140,0)
 
+def create_hole(cx,cy,cz,lx,ly,lz):
+        x0 = cx - lx/2
+        y0 = cy - ly/2
+        z0 = cz - lz/2
+        x1 = cx + lx/2
+        y1 = cy + ly/2
+        z1 = cz + lz/2
+        print(x0,y0,z0)
+        print(x1,y1,z1)
+        #mc.setBlocks(x0,y0,z0,x1,y1,z1,8)
+
 def create_ocean(x,z):
 	mc.setBlocks(x,-63,z,x+140,0,z+140,8)
 
