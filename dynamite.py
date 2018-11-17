@@ -1,10 +1,13 @@
 # dynamite.py
-# 9/7/18
-# Leif Anderson for Dallas Young Makers
-#
-# basic edit operations for Minecraft Pi
-#
+
 from mcpi.minecraft import Minecraft
 from mcpi import block
 
+def set_dynamite():
+    pass
 
+def set_dynamite_block(x,y,z):
+    pass
+
+def dynamite_mode():
+    pass

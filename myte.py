@@ -140,7 +140,3 @@ def sonar(x,z):
         if blk != 8 and blk != 9:    
             return -y
     return -y
-
-
-
-    
