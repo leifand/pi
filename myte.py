@@ -86,8 +86,8 @@ def write_mytes(x,y,z,offset):
 def clear_myte(x,y,z):
     mc.setBlocks(x,y,z,x+1,y+1,z+1,0)
     
-def create_data_cave(x,z):
-	mc.setBlocks(x,-63,z,x+140,64,z+140,0)
+def create_data_cave():
+	mc.setBlocks(-70,-63,-70,70,100,70,0)
 
 def create_hole(cx,cy,cz,lx,ly,lz):
         x0 = cx - lx/2
@@ -100,8 +100,8 @@ def create_hole(cx,cy,cz,lx,ly,lz):
         print(x1,y1,z1)
         #mc.setBlocks(x0,y0,z0,x1,y1,z1,8)
 
-def create_ocean(x,z):
-	mc.setBlocks(x,-63,z,x+140,0,z+140,8)
+def create_ocean():
+	mc.setBlocks(-70,-63,-70,70,0,70,8)
 
 def gen_8bit_seq():
     byte_seq = []
@@ -133,5 +133,14 @@ def test_run():
     start_time = time.time()
     write_mytes(-65,-64,-65,64)
     print (time.time() - start_time)
+
+def sonar(x,z):
+    for y in range(0,64):
+        blk = mc.getBlock(x,-y,z)
+        if blk != 8 and blk != 9:    
+            return -y
+    return -y
+
+
 
     
