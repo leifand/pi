@@ -58,3 +58,5 @@ def read_blocks(infile):
             count+=1
     f.close()
     return clipboard
+
+mc.postToChat('The worldbuilder library has been loaded ...')

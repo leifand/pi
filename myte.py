@@ -3,6 +3,7 @@
 from mcpi.minecraft import Minecraft
 from mcpi import block
 import time
+from time import sleep
 import random
 
 mc = Minecraft.create()
@@ -94,14 +95,15 @@ def create_hole(cx,cy,cz,lx,ly,lz):
         y0 = cy - ly/2
         z0 = cz - lz/2
         x1 = cx + lx/2
-        y1 = cy + ly/2
+        y1 = cy + ly/2                                                                                                          
         z1 = cz + lz/2
         print(x0,y0,z0)
         print(x1,y1,z1)
         #mc.setBlocks(x0,y0,z0,x1,y1,z1,8)
 
 def create_ocean():
-	mc.setBlocks(-70,-63,-70,70,0,70,8)
+    create_data_cave()
+    mc.setBlocks(-70,-63,-70,70,-1,70,8)
 
 def gen_8bit_seq():
     byte_seq = []
@@ -135,8 +137,26 @@ def test_run():
     print (time.time() - start_time)
 
 def sonar(x,z):
-    for y in range(0,64):
+    for y in range(1,64):
         blk = mc.getBlock(x,-y,z)
         if blk != 8 and blk != 9:    
             return -y
-    return -y
+    return -64
+
+def sonar_search(x0,z0,x1,z1):
+    pings = []
+    for x in range(x0,x1):
+        for z in range(z0,z1):
+            print x,z
+            ping = sonar(x,z)
+            if ping > -64:
+                mc.postToChat("Captain! We've found an anomaly on the ocean floor.")
+                pings.append([x,ping,z])
+    return pings
+
+def paste_radar_image(pings):
+    for i in range(len(pings)):
+        curr = pings[i]
+        mc.setBlock(curr[0],curr[1]+63,curr[2],41)
+
+mc.postToChat("The myte library has been loaded ...")
