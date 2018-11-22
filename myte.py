@@ -54,14 +54,14 @@ def write_myte(myte,x,y,z):
 
 def read_myte(x,y,z):
     myte = [0,0,0,0,0,0,0,0]
-    myte[0] = mc.getBlock(x,y,z)
-    myte[1] = mc.getBlock(x+1,y,z)
-    myte[2] = mc.getBlock(x,y,z+1)
-    myte[3] = mc.getBlock(x+1,y,z+1)
-    myte[4] = mc.getBlock(x,y+1,z)
-    myte[5] = mc.getBlock(x+1,y+1,z)
-    myte[6] = mc.getBlock(x,y+1,z+1)
-    myte[7] = mc.getBlock(x+1,y+1,z+1)
+    myte[0] = block_to_mit(mc.getBlock(x,y,z))
+    myte[1] = block_to_mit(mc.getBlock(x+1,y,z))
+    myte[2] = block_to_mit(mc.getBlock(x,y,z+1))
+    myte[3] = block_to_mit(mc.getBlock(x+1,y,z+1))
+    myte[4] = block_to_mit(mc.getBlock(x,y+1,z))
+    myte[5] = block_to_mit(mc.getBlock(x+1,y+1,z))
+    myte[6] = block_to_mit(mc.getBlock(x,y+1,z+1))
+    myte[7] = block_to_mit(mc.getBlock(x+1,y+1,z+1))
     return myte
 
 def myte2bin(myte):
@@ -73,20 +73,19 @@ def myte2bin(myte):
             result += '1'
     return result    
 
-def bin2myte(bin):
-    result = []
-    for c in bin:
-        if c == '0':
-            result.append(0)
-        elif c == '1':
-            result.append(1)
-        else:
-            pass
-    del result[0]
+def bin2myte(binum):
+    result = [0,0,0,0,0,0,0,0]
+    offset = 10 - len(binum)
+    for i in range(offset,len(binum)):
+        if binum[i] == '1':
+            result[i] = 1 
     return result
 
 def myte2ascii(myte):
     return chr(int(myte2bin(myte),2))
+
+def ascii2myte(char):
+    return bin2myte(bin(ord(char)))
 
 def write_mytes(x,y,z,offset):
     if offset == 2:
@@ -175,6 +174,7 @@ def sonar_search(x0,z0,x1,z1,blk_type=41):
             ping = sonar(x,z)
             if ping > -64:
                 mc.postToChat("Captain! We've found an anomaly on the ocean floor.")
+                mc.postToChat([x,ping,z,blk_type])
                 sonar_image.append([x,ping,z,blk_type])
     return sonar_image
 
