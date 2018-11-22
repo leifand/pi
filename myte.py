@@ -64,6 +64,30 @@ def read_myte(x,y,z):
     myte[7] = mc.getBlock(x+1,y+1,z+1)
     return myte
 
+def myte2bin(myte):
+    result = '0b'
+    for i in range(8):
+        if myte[i] == 0: 
+            result += '0'
+        else:
+            result += '1'
+    return result    
+
+def bin2myte(bin):
+    result = []
+    for c in bin:
+        if c == '0':
+            result.append(0)
+        elif c == '1':
+            result.append(1)
+        else:
+            pass
+    del result[0]
+    return result
+
+def myte2ascii(myte):
+    return chr(int(myte2bin(myte),2))
+
 def write_mytes(x,y,z,offset):
     if offset == 2:
         write_random_myte(x,y,z)
@@ -124,7 +148,7 @@ def display_all_mytes():
     row = 0
     col = 0
     for i in range(len(byte_list)):
-        if col == 32:
+        if col == 64:
             col = 0
             row += 4
         write_myte(byte_list[i],col,20,row-40)
@@ -143,20 +167,29 @@ def sonar(x,z):
             return -y
     return -64
 
-def sonar_search(x0,z0,x1,z1):
-    pings = []
+def sonar_search(x0,z0,x1,z1,blk_type=41):
+    sonar_image = []
     for x in range(x0,x1):
         for z in range(z0,z1):
             print x,z
             ping = sonar(x,z)
             if ping > -64:
                 mc.postToChat("Captain! We've found an anomaly on the ocean floor.")
-                pings.append([x,ping,z])
-    return pings
+                sonar_image.append([x,ping,z,blk_type])
+    return sonar_image
 
-def paste_radar_image(pings):
-    for i in range(len(pings)):
-        curr = pings[i]
+def paste_radar_image(image):
+    for i in range(len(image)):
+        curr = image[i]
         mc.setBlock(curr[0],curr[1]+63,curr[2],41)
+
+def radar_image_to_model(radar_image):
+    model = []
+    xnorm = -radar_image[0][0]
+    ynorm = -radar_image[0][1]
+    znorm = -radar_image[0][2]
+    for i in range(len(radar_image)):
+        model.append(map(lambda x,y:x+y,radar_image[i],[xnorm,ynorm,znorm,0]))
+    return model
 
 mc.postToChat("The myte library has been loaded ...")
