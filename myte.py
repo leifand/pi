@@ -178,18 +178,28 @@ def sonar_search(x0,z0,x1,z1,blk_type=41):
                 sonar_image.append([x,ping,z,blk_type])
     return sonar_image
 
-def paste_radar_image(image):
+def paste_sonar_image(image):
     for i in range(len(image)):
         curr = image[i]
         mc.setBlock(curr[0],curr[1]+63,curr[2],41)
 
-def radar_image_to_model(radar_image):
+def sonar_image_to_model(sonar_image):
     model = []
-    xnorm = -radar_image[0][0]
-    ynorm = -radar_image[0][1]
-    znorm = -radar_image[0][2]
-    for i in range(len(radar_image)):
-        model.append(map(lambda x,y:x+y,radar_image[i],[xnorm,ynorm,znorm,0]))
+    xnorm = -sonar_image[0][0]
+    ynorm = -sonar_image[0][1]
+    znorm = -sonar_image[0][2]
+    for i in range(len(sonar_image)):
+        model.append(map(lambda x,y:x+y,sonar_image[i],[xnorm,ynorm,znorm,0]))
     return model
+
+def multiplyBy(n):
+    return lambda x: x*n
+
+def make_counter():
+    count = [0]
+    def inc(): 
+        count[0] += 1
+        return count[0]
+    return inc
 
 mc.postToChat("The myte library has been loaded ...")
