@@ -124,10 +124,6 @@ def create_hole(cx,cy,cz,lx,ly,lz):
         print(x1,y1,z1)
         #mc.setBlocks(x0,y0,z0,x1,y1,z1,8)
 
-def create_ocean():
-    create_data_cave()
-    mc.setBlocks(-70,-63,-70,70,-1,70,8)
-
 def gen_8bit_seq():
     byte_seq = []
     for r7 in range(2):
@@ -158,39 +154,6 @@ def test_run():
     start_time = time.time()
     write_mytes(-65,-64,-65,64)
     print (time.time() - start_time)
-
-def sonar(x,z):
-    for y in range(1,64):
-        blk = mc.getBlock(x,-y,z)
-        if blk != 8 and blk != 9:    
-            return -y
-    return -64
-
-def sonar_search(x0,z0,x1,z1,blk_type=41):
-    sonar_image = []
-    for x in range(x0,x1):
-        for z in range(z0,z1):
-            print x,z
-            ping = sonar(x,z)
-            if ping > -64:
-                mc.postToChat("Captain! We've found an anomaly on the ocean floor.")
-                mc.postToChat([x,ping,z,blk_type])
-                sonar_image.append([x,ping,z,blk_type])
-    return sonar_image
-
-def paste_sonar_image(image):
-    for i in range(len(image)):
-        curr = image[i]
-        mc.setBlock(curr[0],curr[1]+63,curr[2],41)
-
-def sonar_image_to_model(sonar_image):
-    model = []
-    xnorm = -sonar_image[0][0]
-    ynorm = -sonar_image[0][1]
-    znorm = -sonar_image[0][2]
-    for i in range(len(sonar_image)):
-        model.append(map(lambda x,y:x+y,sonar_image[i],[xnorm,ynorm,znorm,0]))
-    return model
 
 def multiplyBy(n):
     return lambda x: x*n
