@@ -4,6 +4,7 @@ from mcpi import block
 mc = Minecraft.create()
 
 def create_ocean():
+    mc.setBlocks(-70,0,-70,70,50,70,0)
     mc.setBlocks(-70,-63,-70,70,-1,70,8)
 
 def sonar(x,z):
