@@ -1,5 +1,6 @@
 from mcpi.minecraft import Minecraft
 from mcpi import block
+import Tkinter
 
 mc = Minecraft.create()
 
@@ -31,7 +32,7 @@ def paste_sonar_image(sonar_image, block_type=41):
         curr = sonar_image[i]
         mc.setBlock(curr[0],curr[1]+63,curr[2],block_type)
 
-def sonar_image_to_model(sonar_image):
+def normalize_sonar_image(sonar_image):
     model = []
     xnorm = -sonar_image[0][0]
     ynorm = -sonar_image[0][1]
@@ -41,3 +42,6 @@ def sonar_image_to_model(sonar_image):
     return model
 
 mc.postToChat("The ocean library has been loaded ...")
+
+top = Tkinter.Tk()
+top.mainloop()  
