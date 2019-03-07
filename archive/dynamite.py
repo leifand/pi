@@ -5,6 +5,7 @@ from mcpi import block
 import time
 from time import sleep
 
+    
 mc = Minecraft.create()
 tnt = 46
 

@@ -8,6 +8,10 @@ def create_ocean():
     mc.setBlocks(-70,0,-70,70,50,70,0)
     mc.setBlocks(-70,-63,-70,70,-1,70,8)
 
+def create_huge_pit():
+    mc.setBlocks(-127,10,-127,127,-63,127,0)
+
+
 def sonar(x,z):
     for y in range(55,64):
         blk = mc.getBlock(x,-y,z)
@@ -43,5 +47,5 @@ def normalize_sonar_image(sonar_image):
 
 mc.postToChat("The ocean library has been loaded ...")
 
-top = Tkinter.Tk()
-top.mainloop()  
+#top = Tkinter.Tk()
+#top.mainloop()  

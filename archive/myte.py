@@ -37,6 +37,7 @@ def random_myte_generator():
     for i in range(8):
         if random.randint(0,1) == 1:
             myte[i] = 1
+    #mc.postToChat( myte2ascii(myte))    
     return myte        
 
 def write_random_myte(x,y,z):
