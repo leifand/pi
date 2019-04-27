@@ -1,6 +1,6 @@
 from mcpi.minecraft import Minecraft
 from mcpi import block
-import Tkinter
+#import Tkinter
 
 mc = Minecraft.create()
 
@@ -23,7 +23,7 @@ def sonar_search(x0,z0,x1,z1,blk_type=41):
     sonar_image = []
     for x in range(x0,x1):
         for z in range(z0,z1):
-            print x,z
+            #print x,z
             ping = sonar(x,z)
             if ping > -64:
                 mc.postToChat("Captain! We've found an anomaly on the ocean floor.")
